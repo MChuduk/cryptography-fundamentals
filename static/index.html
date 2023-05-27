@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://localhost:3000/styles.css">
+</head>
+<script>
+    const send = async () => {
+      const message = document.getElementById('message').value;
+      const key = document.getElementById('key').value;
+      const result = document.getElementById('result');
+      console.log(message);
+      const response = await fetch(`http://localhost:3000/api/caesar?message=${message}&key=${key}`);
+      result.innerText = await response.json();
+    }
+</script>
+<body>
+<input type="text" id="message" placeholder="message"/>
+<input type="number" id="key" placeholder="key"/>
+<div id="result" class="result"></div>
+<button onclick="send()">send</button>
+</body>
+</html>
